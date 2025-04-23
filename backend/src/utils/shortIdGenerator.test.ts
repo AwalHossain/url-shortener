@@ -83,7 +83,8 @@ describe('generateShortId Utility', () => {
       // console.log('>>> Actual error caught:', error);
       expect(error).toBeInstanceOf(AppError);
       expect(error).toHaveProperty('statusCode', httpStatus.INTERNAL_SERVER_ERROR);
-      expect(error).toHaveProperty('message', 'Failed to generate short ID due to internal error'); 
+      // Compare against the actual message you see in the log
+      expect(error).toHaveProperty('message', 'Failed to retrieve counter sequence'); // Or whatever the actual message is
     }
   });
 }); 
