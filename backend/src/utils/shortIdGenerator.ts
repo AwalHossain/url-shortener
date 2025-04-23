@@ -6,6 +6,7 @@
 
 // Import nanoid dynamically as it's an ESM module
 // import { nanoid } from "nanoid"; // Original static import causes ERR_REQUIRE_ESM
+import httpStatus from "http-status";
 import Url from "../app/modules/url/url.model";
 import { AppError } from "../error/appError";
 
@@ -25,7 +26,7 @@ const generateShortId = async (length: number) => {
     retries++;
   }
 
-  throw new AppError("Failed to generate short ID", 500);
+  throw new AppError("Failed to generate short ID", httpStatus.INTERNAL_SERVER_ERROR);
 }
 
 export default generateShortId; 
