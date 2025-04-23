@@ -37,9 +37,14 @@ const generateShortId = async (): Promise<string> => {
 
     return shortId;
   } catch (error) {
-    // Log the error for debugging
     console.error("Error generating short ID:", error);
-    // Rethrow a generic error or handle specific database errors if needed
+
+    // If it's already an AppError, just re-throw it
+    if (error instanceof AppError) {
+        throw error;
+    }
+    
+    // Otherwise, wrap it in a generic internal error AppError
     throw new AppError('Failed to generate short ID due to internal error', httpStatus.INTERNAL_SERVER_ERROR);
   }
 }
