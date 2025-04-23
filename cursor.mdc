@@ -1,0 +1,32 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+Sheba Platform Limited
+ Take Home Task: Software Engineer
+ Scenario:
+ Develop a service that generates short URLs for longer, original URLs.
+ Functionality:
+ ● Theservice should accept a long URL as input.
+ ● Implement an algorithm to generate a unique, shorter string representation (e.g., 6
+ characters) for the long URL.
+ ● Thisshort URL should redirect the user to the original URL when accessed.
+ Technical Considerations:
+ ● Chooseasuitable data structure to store the mapping between original and short
+ URLs
+ ● Consider techniques to ensure short URLs are unique and don't conflict with existing
+ entries.
+ ● Implement logic to handle potential errors like invalid URLs or exceeding a limit on
+ short URL length.
+ Deliverables:
+ ● Functional code for the short URL generator service.
+ ● Unit tests covering various scenarios (valid/invalid URLs, short URL uniqueness).
+ ● Abrief explanation of your chosen data structure and approach to handling short
+ URL uniqueness.
+ Evaluation Criteria:
+ ● Thecodewill be evaluated for functionality, correctness, efficiency, and adherence to
+ best practices.
+ ● Thequality and comprehensiveness of unit tests will be assessed.
+ ● Theclarity of the explanation for data structure and uniqueness handling will be
+ reviewed.
