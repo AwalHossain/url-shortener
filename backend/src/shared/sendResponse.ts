@@ -15,7 +15,7 @@ type IApiRespoonse<T> = {
         page?: number,
         limit?: number,
         skip?: number,
-    }
+    } | null
 
 
 }
@@ -26,9 +26,9 @@ export const sendResponse = <T>(res: Response, data: IApiRespoonse<T>): void => 
     const responseData: IApiRespoonse<T> = {
         statusCode: data.statusCode,
         success: data.success,
-        message: data.message,
-        data: data.data || null || undefined,
-        meta: data.meta || null || undefined,
+        message: data.message || null,
+        data: data.data || null,
+        meta: data.meta || null,
     }
 
     res.status(data.statusCode).json(responseData);
