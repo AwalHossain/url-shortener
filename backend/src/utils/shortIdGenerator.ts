@@ -4,23 +4,28 @@
  * @returns {Promise<string>} - short ID
  */
 
-import { nanoid } from "nanoid";
+// Import nanoid dynamically as it's an ESM module
+// import { nanoid } from "nanoid"; // Original static import causes ERR_REQUIRE_ESM
 import Url from "../app/modules/url/url.model";
+import { AppError } from "../error/appError";
 
 const generateShortId = async (length: number) => {
-const MAX_RETRIES = 5;
-let retries = 0;
+  // Dynamically import nanoid
+  const { nanoid } = await import("nanoid");
 
-while (retries < MAX_RETRIES) {
-  const shortId = nanoid(length);
-  const existingUrl = await Url.findOne({ shortId });
-  if (!existingUrl) {
-    return shortId;
+  const MAX_RETRIES = 5;
+  let retries = 0;
+
+  while (retries < MAX_RETRIES) {
+    const shortId = nanoid(length);
+    const existingUrl = await Url.findOne({ shortId });
+    if (!existingUrl) {
+      return shortId;
+    }
+    retries++;
   }
-  retries++;
-}
 
-throw new Error("Failed to generate short ID");
+  throw new AppError("Failed to generate short ID", 500);
 }
 
 export default generateShortId; 
