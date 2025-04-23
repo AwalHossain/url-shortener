@@ -9,3 +9,10 @@ logs
 npm-debug.log*
 
 
+# Coverage
+coverage
+
+# Test
+
+
+
